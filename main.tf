@@ -46,6 +46,10 @@ resource "azurerm_storage_account" "storage" {
 
 //CosmosDB
 
+resource "random_integer" "ri" {
+  min = 10000
+  max = 99999
+}
 
 resource "azurerm_cosmosdb_account" "db" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
