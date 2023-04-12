@@ -94,6 +94,7 @@ resource "azurerm_cosmosdb_account" "db" {
 }
 
 
+
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "example" {
@@ -118,10 +119,10 @@ resource "azurerm_key_vault" "example" {
 
 resource "azurerm_storage_account" "example" {
   name                     = "workspacestorageaccount"
-  location                 = azurerm_resource_group.example.location
-  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.rg.location
+  resource_group_name      = azurerm_resource_group.rg.name
   account_tier             = "Standard"
-  account_replication_type = "GRS"
+  account_replication_type = "LRS"
 }
 
 resource "azurerm_machine_learning_workspace" "example" {
