@@ -1,4 +1,4 @@
-# DSBA6190 - Deployment Lab
+# Deployment Lab
 
 ## Set up your Repo's Secrets
 
