@@ -44,7 +44,7 @@ resource "azurerm_storage_account" "storage" {
 }
 
 
-//CosmosDB
+/////////////////////////////////////////////////////////////CosmosDB
 
 resource "random_integer" "ri" {
   min = 10000
@@ -94,6 +94,7 @@ resource "azurerm_cosmosdb_account" "db" {
 }
 
 
+/////////////////////////////////////////////////// azure ml
 
 data "azurerm_client_config" "current" {}
 
