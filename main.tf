@@ -98,10 +98,7 @@ resource "azurerm_cosmosdb_account" "db" {
 
 data "azurerm_client_config" "current" {}
 
-# resource "azurerm_resource_group" "example" {
-#   name     = "tfex-azureml-${random_integer.ri.result}"
-#   location = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-ml"
-# }
+
 
 resource "azurerm_application_insights" "ai" {
   name                = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-ai"
@@ -118,13 +115,7 @@ resource "azurerm_key_vault" "kv" {
   sku_name            = "premium"
 }
 
-# resource "azurerm_storage_account" "example" {
-#   name                     = "workspacestorageaccount"
-#   location                 = azurerm_resource_group.rg.location
-#   resource_group_name      = azurerm_resource_group.rg.name
-#   account_tier             = "Standard"
-#   account_replication_type = "LRS"
-# }
+
 
 resource "azurerm_machine_learning_workspace" "mlw" {
   name                    = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-mlw"
@@ -138,4 +129,18 @@ resource "azurerm_machine_learning_workspace" "mlw" {
     type = "SystemAssigned"
   }
 }
+/////////////////////////////////////// alexa 
+resource "azurerm_bot_channels_registration" "bcr" {
+  name                = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-bcr"
+  location            = "global"
+  resource_group_name = azurerm_resource_group.rg.name
+  sku                 = "F0"
+  microsoft_app_id    = data.azurerm_client_config.current.client_id
+}
 
+resource "azurerm_bot_channel_alexa" "bca" {
+  bot_name            = azurerm_bot_channels_registration.bcr.name
+  location            = azurerm_bot_channels_registration.bcr.location
+  resource_group_name = azurerm_resource_group.rg.name
+  skill_id            = "amzn1.ask.skill.00000000-0000-0000-0000-000000000000"
+}
