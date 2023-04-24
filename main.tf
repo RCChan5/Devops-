@@ -103,15 +103,15 @@ data "azurerm_client_config" "current" {}
 #   location = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-ml"
 # }
 
-resource "azurerm_application_insights" "example" {
-  name                = "workspace-example-ai"
+resource "azurerm_application_insights" "ai" {
+  name                = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-ai"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   application_type    = "web"
 }
 
-resource "azurerm_key_vault" "example" {
-  name                = "workspaceexamplekeyvault"
+resource "azurerm_key_vault" "kv" {
+  name                = "${var.class_name}-${var.student_name}-${random_integer.deployment_id_suffix.result}-kv"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   tenant_id           = data.azurerm_client_config.current.tenant_id
@@ -126,12 +126,12 @@ resource "azurerm_key_vault" "example" {
 #   account_replication_type = "LRS"
 # }
 
-resource "azurerm_machine_learning_workspace" "example" {
-  name                    = "example-workspace"
+resource "azurerm_machine_learning_workspace" "mlw" {
+  name                    ="${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-mlw"
   location                = azurerm_resource_group.rg.location
   resource_group_name     = azurerm_resource_group.rg.name
-  application_insights_id = azurerm_application_insights.example.id
-  key_vault_id            = azurerm_key_vault.example.id
+  application_insights_id = azurerm_application_insights.ai.id
+  key_vault_id            = azurerm_key_vault.kv.id
   storage_account_id      = azurerm_storage_account.storage.id
 
   identity {
