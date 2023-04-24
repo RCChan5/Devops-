@@ -144,3 +144,12 @@ resource "azurerm_bot_channel_alexa" "bca" {
   resource_group_name = azurerm_resource_group.rg.name
   skill_id            = "amzn1.ask.skill.00000000-0000-0000-0000-000000000000"
 }
+
+/////////////////////////////////////////// Power Bi
+resource "azurerm_powerbi_embedded" "powerbi" {
+  name                = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-powerbi"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  sku_name            = "A1"
+  administrators      = ["rchan5@uncc.edu"]
+}
