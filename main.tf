@@ -99,8 +99,8 @@ resource "azurerm_cosmosdb_account" "db" {
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = azurerm_resource_group.rg.location
+  name     = "tfex-azureml-${random_integer.ri.result}"
+  location = "${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}-ml"
 }
 
 resource "azurerm_application_insights" "example" {
