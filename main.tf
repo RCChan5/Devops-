@@ -142,7 +142,7 @@ resource "azurerm_bot_channel_alexa" "bca" {
   bot_name            = azurerm_bot_channels_registration.bcr.name
   location            = azurerm_bot_channels_registration.bcr.location
   resource_group_name = azurerm_resource_group.rg.name
-  skill_id            = ${random_integer.deployment_id_suffix.result}-"amzn1.ask.skill.00000000-0000-0000-0000-000000000000"
+  skill_id            = "${random_integer.deployment_id_suffix.result}-amzn1.ask.skill.00000000-0000-0000-0000-000000000000"
 }
 
 /////////////////////////////////////////// Power Bi
