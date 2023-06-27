@@ -1,8 +1,8 @@
-# Deployment Lab
+# Deployment 
 
-## Set up your Repo's Secrets
+## Setting up repo's secrets
 
-In your GitHub repo, create the follow secrets with the specified values.
+Created the the follow secrets with the specified values.
 
 - ARM_CLIENT_ID: `c075ec05-db99-4195-ba8b-f0d42995e5e1`
 - ARM_CLIENT_SECRET: `Check class website`
@@ -13,7 +13,7 @@ In your GitHub repo, create the follow secrets with the specified values.
 
 ## Getting Started with Terraform
 
-Make your `main.tf`, `backend.tf`, and `variables.tf` files.
+Made `main.tf`, `backend.tf`, and `variables.tf` files.
 
 Initialize Terraform Locally
 ```bash
